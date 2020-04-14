@@ -29,7 +29,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
-    testResultsFiles: '/junit.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/junit.xml'
 - task: WhiteSource Bolt@20
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)/' 
