@@ -24,3 +24,9 @@ steps:
   inputs:
     codeCoverageTool: Cobertura
     summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
+# Publish Test Results
+# Publish test results to Azure Pipelines
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/junit.xml' 
