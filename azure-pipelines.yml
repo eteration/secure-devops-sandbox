@@ -30,6 +30,7 @@ steps:
   inputs:
     testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
     testResultsFiles: '$(System.DefaultWorkingDirectory)/junit.xml'
-- task: WhiteSource Bolt@20
-  inputs:
-    cwd: '$(System.DefaultWorkingDirectory)/' 
+# - task: WhiteSource Bolt@20
+#   inputs:
+#     cwd: '$(System.DefaultWorkingDirectory)/' 
+- task: SonarCloudAnalyze@1
