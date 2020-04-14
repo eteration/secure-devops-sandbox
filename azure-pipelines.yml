@@ -36,7 +36,9 @@ steps:
 - task: SonarCloudPrepare@1
   inputs:
     organization: 'eteration'
-    scannerMode: 'MSBuild'
-    projectKey: 'secure-devops-sandbox.azure-meetupts.eteration'
-    projectName: 'secure-devops-sandbox'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'secure-devops-sandbox.azure-meetups.eteration'
+    cliProjectName: 'secure-devops-sandbox'
+    cliSources: '.'
 - task: SonarCloudAnalyze@1
