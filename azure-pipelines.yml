@@ -35,6 +35,7 @@ steps:
 #     cwd: '$(System.DefaultWorkingDirectory)/' 
 - task: SonarCloudPrepare@1
   inputs:
+    SonarCloud: 'azure-devops-build'
     organization: 'eteration'
     scannerMode: 'CLI'
     configMode: 'manual'
