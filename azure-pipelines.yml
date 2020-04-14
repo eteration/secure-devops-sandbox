@@ -33,4 +33,10 @@ steps:
 # - task: WhiteSource Bolt@20
 #   inputs:
 #     cwd: '$(System.DefaultWorkingDirectory)/' 
+- task: SonarCloudPrepare@1
+  inputs:
+    organization: 'eteration'
+    scannerMode: 'MSBuild'
+    projectKey: 'secure-devops-sandbox.azure-meetupts.eteration'
+    projectName: 'secure-devops-sandbox'
 - task: SonarCloudAnalyze@1
