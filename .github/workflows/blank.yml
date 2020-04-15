@@ -43,3 +43,10 @@ jobs:
         # The coverage reports that should be parsed (separated by semicolon). Globbing is supported.
         reports: coverage/cobertura-coverage.xml # default is coverage.xml
         reporttypes: HtmlInline;Cobertura
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      with:
+        projectBaseDir: .
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
