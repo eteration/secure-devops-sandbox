@@ -46,3 +46,13 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Azure Container Registry (eteration)'
+    repository: 'eteration'
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
+    buildContext: '.'
+    tags: |
+      $(Build.BuildId)
+      devLatest
