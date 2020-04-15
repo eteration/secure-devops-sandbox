@@ -3,6 +3,8 @@ coverage
 build
 node_modules
 stats.json
+junit.xml
+yarn.lock
 
 # Cruft
 .DS_Store
