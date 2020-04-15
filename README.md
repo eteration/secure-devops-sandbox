@@ -5,6 +5,7 @@
 <div align="center">A sandbox project that uses react/nodejs project to demonstrate secure devops practices based on the highly successful react-boilerplate</div>
 
 <br />
+  ![Simple NPM Build](https://github.com/eteration/secure-devops-sandbox/workflows/Simple%20NPM%20Build/badge.svg)
 
 <div align="center">
   <!-- Dependency Status -->
