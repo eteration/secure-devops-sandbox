@@ -13,11 +13,19 @@ variables:
   COVERALLS_GIT_BRANCH: $(Build.SourceBranchName)
 
 steps:
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+- script: |
+    npm audit --production
+  displayName: 'NPM Audit'
 
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 - script: |
     npm install
     npm run build
