@@ -10,6 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- bash: echo This script could use $SYSTEM_ACCESSTOKEN
+  env:
+    COVERALLS_SERVICE_NAME: 'Azure Devops'
+    COVERALLS_REPO_TOKEN: 'rTi89wSWAgRSLutOmfGTDzjTgBHrDHM4S'
+    COVERALLS_SERVICE_JOB_ID: $(Build.BuildId)
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
@@ -19,6 +24,7 @@ steps:
     npm install
     npm run build
     npm run test
+    npm run coveralls
   displayName: 'npm install, build and test'
 - task: PublishCodeCoverageResults@1
   inputs:
