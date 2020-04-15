@@ -13,7 +13,6 @@ variables:
   COVERALLS_GIT_BRANCH: $(Build.SourceBranchName)
 
 steps:
-
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
@@ -21,17 +20,16 @@ steps:
 - script: |
     npm audit --production
   displayName: 'NPM Audit'
-
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
 - script: |
     npm install
     npm run build
     npm run test
     npm run coveralls
-  displayName: 'npm install, build and test'
+  displayName: 'NPM Build'
+- script: |
+    npm run test
+    npm run coveralls
+  displayName: 'NPM Test'
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: Cobertura
