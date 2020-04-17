@@ -23,8 +23,6 @@ steps:
 - script: |
     npm install
     npm run build
-    npm run test
-    npm run coveralls
   displayName: 'NPM Build'
 - script: |
     npm run test
