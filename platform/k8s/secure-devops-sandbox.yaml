@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sandbox
+  labels:
+    app: sandbox
+spec:
+  type: NodePort
+  ports:
+  - port: 443
+    protocol: TCP
+    nodePort: 30443
+    name: sandbox-port0
+  - port: 80
+    protocol: TCP
+    nodePort: 30080
+    name: sandbox-port1
+  selector:
+    app: sandbox
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: sandbox
+  name: sandbox
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: sandbox
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: sandbox
+    spec:
+      containers:
+      - image: eteration.azurecr.io/meetup/secure-devops-sandbox:devLatest
+        imagePullPolicy: Always
+        name: sandbox
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+      imagePullSecrets:
+        - name: eteration.azurecr.io
+      restartPolicy: Always  
+status: {}
