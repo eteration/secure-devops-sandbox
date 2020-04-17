@@ -66,3 +66,11 @@ steps:
     tags: |
       $(Build.BuildId)
       devLatest
+
+- task: alcide-advisor-scan@2
+  inputs:
+    advisorScanReportFormat: 'html'
+    advisorScanReport: '$(Build.ArtifactStagingDirectory)/advisor-report.html'
+    alcideApiKey: 'c46e1d45-564c-4844-a95b-61b639426a5b'
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'meetup webinar cluster'
