@@ -55,6 +55,7 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 - task: Docker@2
+  displayName: 'Build and push Docker Image'
   inputs:
     containerRegistry: 'Azure Container Registry (eteration)'
     repository: 'meetup/secure-devops-sandbox'
@@ -65,9 +66,10 @@ steps:
       $(Build.BuildId)
       devLatest
 
-
-- task: CmdLine@2
+- task: Bash@3
+  displayName: 'Container vulnerability scan'
   inputs:
+    targetType: 'inline'
     script: |
       export CLAIR_ADDR=52.149.59.87:6060
       export CLAIR_OUTPUT=Negligible
@@ -77,9 +79,18 @@ steps:
       export FORMAT_OUTPUT=standard
       wget https://github.com/optiopay/klar/releases/download/v2.4.0/klar-2.4.0-linux-amd64
       chmod +x ./klar-2.4.0-linux-amd64
-      ./klar-2.4.0-linux-amd64 eteration.azurecr.io/demo/nginx
-  displayName: 'Container vulnerability scan'
-
+      ./klar-2.4.0-linux-amd64 eteration.azurecr.io/demo/nginx > klar-report.txt
+      status=$?  
+      ## take some decision ## 
+      ## Did we found IP address? Use exit status of the grep command ##
+      if [ $status -eq 0 ]
+      then
+        echo "Success: Container vulnerability check has passed" 
+        exit 0
+      else
+        echo "Failure: Container vulnerability check has failed" >&2
+        exit 1
+      fi
 
 - task: alcide-advisor-scan@2
   inputs:
