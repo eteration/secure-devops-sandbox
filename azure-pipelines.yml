@@ -75,11 +75,11 @@ steps:
       export DOCKER_USER=b6749c71-9dc5-4c03-8d71-f62bac902210
       export DOCKER_PASSWORD=a910dbaa-12cf-4cec-87a2-ba2f2b40ed8b
       export FORMAT_OUTPUT=standard
-      
       wget https://github.com/optiopay/klar/releases/download/v2.4.0/klar-2.4.0-linux-amd64
-      
-      chmod + x klar-2.4.0-linux-amd64
+      chmod +x ./klar-2.4.0-linux-amd64
       ./klar-2.4.0-linux-amd64 eteration.azurecr.io/demo/nginx
+  displayName: 'Container vulnerability scan'
+
 
 - task: alcide-advisor-scan@2
   inputs:
