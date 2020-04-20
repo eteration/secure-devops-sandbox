@@ -93,7 +93,23 @@ steps:
         echo "Failure: Container vulnerability check has failed" >&2
         exit 1
       fi
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish vulnerability scan'
+  inputs:
+    targetPath: $(System.DefaultWorkingDirectory)/reports
+    artifactName: Vulnerability
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'VC2'
+    publishLocation: 'pipeline'
+    
 - task: alcide-advisor-scan@2
   inputs:
     advisorScanReportFormat: 'html'
