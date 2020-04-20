@@ -77,8 +77,7 @@ steps:
       export FORMAT_OUTPUT=standard
       export DOCKER_USER=$(DOCKER_USER)
       export DOCKER_PASSWORD=$(DOCKER_PASSWORD)
-      echo $DOCKER_PASSWORD
-      wget https://github.com/optiopay/klar/releases/download/v2.4.0/klar-2.4.0-linux-amd64
+      wget -q https://github.com/optiopay/klar/releases/download/v2.4.0/klar-2.4.0-linux-amd64
       chmod +x ./klar-2.4.0-linux-amd64
       ./klar-2.4.0-linux-amd64 eteration.azurecr.io/meetup/secure-devops-sandbox:devLatest > klar-report.txt
       cat ./klar-report.txt
@@ -96,12 +95,16 @@ steps:
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
-    contents: '**/*.txt'
+    contents: '**/klar-report.txt'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     artifactName: 'vulnerability'
-
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'ContainerSecurity'
+    publishLocation: 'pipeline'
 - task: alcide-advisor-scan@2
   inputs:
     advisorScanReportFormat: 'html'
@@ -111,3 +114,13 @@ steps:
     azureSubscriptionEndpoint: 'Microsoft Azure(83f544a2-cbae-45e2-9ee7-14deb94e0a27)'
     azureResourceGroup: 'azure-meetup'
     kubernetesCluster: 'webinar'
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**/advisor-report.html'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'AlcideSecurityAdvisior'
+    publishLocation: 'pipeline'
