@@ -97,14 +97,6 @@ steps:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**/klar-report.txt'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-    artifactName: 'vulnerability'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'ContainerSecurity'
-    publishLocation: 'pipeline'
 - task: alcide-advisor-scan@2
   inputs:
     advisorScanReportFormat: 'html'
@@ -123,4 +115,6 @@ steps:
   inputs:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'AlcideSecurityAdvisior'
-    publishLocation: 'pipeline'
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: 'Vulnerability'
