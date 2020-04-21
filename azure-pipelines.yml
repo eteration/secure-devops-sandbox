@@ -111,10 +111,6 @@ steps:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**/advisor-report.html'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'AlcideSecurityAdvisior'
 - task: PublishBuildArtifacts@1
   inputs:
     artifactName: 'Vulnerability'
