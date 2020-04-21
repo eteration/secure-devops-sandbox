@@ -17,14 +17,14 @@ import messages from './messages';
 
 function HomePage(props) {
   return (
-    <div style={{ 'text-align': 'center' }}>
+    <div style={{ textAlign: 'center' }}>
       <h1>
         <FormattedMessage {...messages.header} />
       </h1>
       <p>
         <FormattedMessage {...messages.detail} />
       </p>
-      <div style={{ 'text-align': 'center', background: 'black', padding: 20 }}>
+      <div style={{ textAlign: 'center', background: 'black', padding: 20 }}>
         <button type="button" onClick={() => props.onLocaleToggle('en')}>
           en
         </button>{' '}

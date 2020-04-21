@@ -1,9 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HomePage /> should render and match the snapshot 1`] = `
-<h1>
-  <span>
-    This is the HomePage container!
-  </span>
-</h1>
+<div
+  style="text-align: center;"
+>
+  <h1>
+    <span>
+      Secure DevOps!
+    </span>
+  </h1>
+  <p>
+    <span>
+      Cloud & Kubernetes provides a rapid, iterative development experience for teams. Azure can provide an end-to-end secure devops solution for your application with minimal effort.
+    </span>
+  </p>
+  <div
+    style="text-align: center; background: black; padding: 20px;"
+  >
+    <button
+      type="button"
+    >
+      en
+    </button>
+     
+    -
+     
+    <button
+      type="button"
+    >
+      tr
+    </button>
+    <br />
+    <br />
+    <img
+      alt="Meetups Eteration"
+      src="https://meetups.eteration.com/logo.png"
+    />
+    <p
+      style="color: white;"
+    >
+      meetups.eteration.com
+    </p>
+  </div>
+</div>
 `;
