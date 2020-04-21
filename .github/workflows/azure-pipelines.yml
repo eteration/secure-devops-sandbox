@@ -31,6 +31,7 @@ jobs:
       displayName: 'NPM Test'
     - script: |
         npm run coveralls
+      displayName: 'Coveralls Report'
     - task: PublishCodeCoverageResults@1
       displayName: 'Code_coverage_report'
       inputs:
