@@ -13,7 +13,7 @@ variables:
   COVERALLS_GIT_BRANCH: $(Build.SourceBranchName)
 
 jobs:
-  - job: "Build and Test"
+  - job: "Build_and_Test"
     steps:
     - task: NodeTool@0
       displayName: 'NPM Audit, Build and Test'
@@ -29,7 +29,7 @@ jobs:
     - script: |
         npm run test
       displayName: 'NPM Test'
-  - job: "Static Code Analysis and Testing"
+  - job: "Static_Code_Analysis_and_Testing"
     steps:
       - task: NodeTool@0
         displayName: 'Coveralls reporting'
@@ -38,12 +38,12 @@ jobs:
       - script: |
           npm run coveralls
       - task: PublishCodeCoverageResults@1
-        displayName: 'Code coverage report'
+        displayName: 'Code_coverage_report'
         inputs:
           codeCoverageTool: Cobertura
           summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
       - task: PublishTestResults@2
-        displayName: 'Publish Test Results'
+        displayName: 'Publish_Test_Results'
         inputs:
           testResultsFormat: 'JUnit'
           testResultsFiles: '$(System.DefaultWorkingDirectory)/junit.xml'
@@ -63,7 +63,7 @@ jobs:
       - task: SonarCloudPublish@1
         inputs:
           pollingTimeoutSec: '300'
-  - job: "Container Build and Scanning"
+  - job: "Container_Build_and_Scanning"
     steps:     
     - task: Docker@2
       displayName: 'Build and push Docker Image'
