@@ -17,6 +17,10 @@ To configure your AKS cluster to use your ACR, you need to indicate Kubernetes f
 
     CLIENT_ID=$(az ad sp show --id http://$myuser --query appId --output tsv)
   
+   you will need to refer to this secret in your kubernetes manifest with 
+         imagePullSecrets:
+        - name: eteration.azurecr.io
+
 To create a Kubernetes secret, execute the commands below. Remember to define a value for MY-ACR-AUTH and to replace the EMAIL-ADDRESS placeholder with your email address:
 
     kubectl create secret docker-registry $MY-ACR-AUTH  --docker-server $ACR_LOGIN_SERVER  --docker-username $CLIENT_ID --docker-password $SP_PASSWD  --docker-email EMAIL-ADDRESS

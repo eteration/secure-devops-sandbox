@@ -1,5 +1,5 @@
 {
-  "app.containers.HomePage.detail": "Yazılım ekipleri bulut ve Kubernetes kullanarak kendilerine hızlı ve döngüsel geliştirme deneyimini sağlayabiliyor. Microsoft Azure ile uygulamalarınıza uçtan-uca güvenli bir DevOps çözümünü en ez efor ile oluşturmanız mümkün.",
-  "app.containers.HomePage.header": "Güvenli DevOps",
+  "app.containers.HomePage.detail": "Yazılım ekipleri Bulut alt PaaS ve Kubernetes kullanarak kendilerine hızlı ve döngüsel geliştirme deneyimini sağlayabiliyor. Microsoft Azure ile uygulamalarınıza uçtan-uca güvenli bir DevOps çözümünü en ez efor ile oluşturmanız mümkün.",
+  "app.containers.HomePage.header": "Güvenli DevOps - Secure DevOps",
   "app.containers.NotFoundPage.header": "404 - Aradığınız sayfa bulunamadı!"
 }
