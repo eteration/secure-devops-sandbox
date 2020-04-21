@@ -3,20 +3,18 @@ kind: Service
 metadata:
   name: sandbox
   labels:
-    app: sandbox
+    io.kompose.service: sandbox
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 443
     protocol: TCP
-    nodePort: 30443
     name: sandbox-port0
   - port: 80
     protocol: TCP
-    nodePort: 30080
     name: sandbox-port1
   selector:
-    app: sandbox
+    io.kompose.service: sandbox
 ---
 apiVersion: apps/v1
 kind: Deployment

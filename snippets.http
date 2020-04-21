@@ -1,0 +1,25 @@
+
+
+
+@webinarTest = 51.143.113.101
+@webinarProd = 52.250.33.210
+@clairCoreOs = 52.149.59.87
+
+### WEBINAR TEST
+GET http://{{webinarTest}}
+Content-Type: text/html
+
+### WEBINAR PROD
+GET http://{{webinarProd}}
+
+### CLAIR HEALTH
+GET http://{{clairCoreOs}}:6061/health
+
+
+### CLAIR Namespaces
+GET http://{{clairCoreOs}}:6060/v1/namespaces
+Content-Type: application/json
+
+### CLAIR VULNERABILITIES
+GET http://{{clairCoreOs}}:6060/v1/namespaces/debian%3A8/vulnerabilities?limit=2
+Content-Type: application/json
