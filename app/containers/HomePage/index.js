@@ -15,6 +15,22 @@ import { changeLocale } from '../LanguageProvider/actions';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import messages from './messages';
 
+export function LanguageButton(props) {
+  const toggle = () => {
+    props.onLocaleToggle(props.lang);
+  };
+  return (
+    <button type="button" onClick={toggle}>
+      {props.lang}
+    </button>
+  );
+}
+
+LanguageButton.propTypes = {
+  onLocaleToggle: PropTypes.func,
+  lang: PropTypes.string,
+};
+
 function HomePage(props) {
   return (
     <div style={{ textAlign: 'center' }}>
@@ -25,13 +41,8 @@ function HomePage(props) {
         <FormattedMessage {...messages.detail} />
       </p>
       <div style={{ textAlign: 'center', background: 'black', padding: 20 }}>
-        <button type="button" onClick={() => props.onLocaleToggle('en')}>
-          en
-        </button>{' '}
-        -{' '}
-        <button type="button" onClick={() => props.onLocaleToggle('tr')}>
-          tr
-        </button>
+        <LanguageButton lang="en" onLocaleToggle={props.onLocaleToggle} />
+        -<LanguageButton lang="tr" onLocaleToggle={props.onLocaleToggle} />
         <br />
         <br />
         <img

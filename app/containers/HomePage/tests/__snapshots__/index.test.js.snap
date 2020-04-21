@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomePage /> should render and match the snapshot 1`] = `
+exports[`<HomePage /> HomePage should render and match the snapshot 1`] = `
 <div
   style="text-align: center;"
 >
@@ -22,9 +22,7 @@ exports[`<HomePage /> should render and match the snapshot 1`] = `
     >
       en
     </button>
-     
     -
-     
     <button
       type="button"
     >
@@ -43,4 +41,12 @@ exports[`<HomePage /> should render and match the snapshot 1`] = `
     </p>
   </div>
 </div>
+`;
+
+exports[`<HomePage /> Language button should render and match the snapshot 1`] = `
+<button
+  type="button"
+>
+  tr
+</button>
 `;

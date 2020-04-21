@@ -5,6 +5,10 @@ jest.mock('../translations/en.json', () => ({
   message2: 'default message 2',
 }));
 
+jest.mock('../translations/tr.json', () => ({
+  message1: 'default message',
+  message2: 'default message 2',
+}));
 const esTranslationMessages = {
   message1: 'mensaje predeterminado',
   message2: '',
@@ -15,6 +19,12 @@ describe('formatTranslationMessages', () => {
     const result = formatTranslationMessages('en', { a: 'a' });
 
     expect(result).toEqual({ a: 'a' });
+  });
+
+  it('should build only defaults when DEFAULT_LOCALE', () => {
+    const result = formatTranslationMessages('tr', { b: 'b' });
+
+    expect(result).toEqual({ b: 'b' });
   });
 
   it('should combine default locale and current locale when not DEFAULT_LOCALE', () => {
