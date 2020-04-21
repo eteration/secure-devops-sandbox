@@ -1,1 +1,5 @@
-[]
+{
+  "app.containers.HomePage.detail": "Cloud & Kubernetes provides a rapid, iterative development experience for teams. Azure can provide an end-to-end secure devops solution for your application with minimal effort.",
+  "app.containers.HomePage.header": "Secure DevOps!",
+  "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
+}

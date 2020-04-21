@@ -10,6 +10,11 @@ export const scope = 'app.containers.HomePage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the HomePage container!',
+    defaultMessage: 'Secure DevOps!',
+  },
+  detail: {
+    id: `${scope}.detail`,
+    defaultMessage:
+      'Cloud & Kubernetes provides a rapid, iterative development experience for teams. Azure can provide an end-to-end secure devops solution for your application with minimal effort.',
   },
 });
