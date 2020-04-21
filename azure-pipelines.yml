@@ -63,7 +63,7 @@ steps:
     Dockerfile: 'Dockerfile'
     buildContext: '.'
     tags: |
-      $(Build.BuildId)
+      build$(Build.BuildId)
       devLatest
 
 - task: Bash@3

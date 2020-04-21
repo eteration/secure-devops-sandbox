@@ -35,7 +35,7 @@ spec:
         io.kompose.service: sandbox
     spec:
       containers:
-      - image: eteration.azurecr.io/meetup/secure-devops-sandbox:latest
+      - image: eteration.azurecr.io/meetup/secure-devops-sandbox:devLatest
         imagePullPolicy: Always
         name: sandbox
         ports:
