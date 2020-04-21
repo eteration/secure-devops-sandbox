@@ -16,7 +16,7 @@ jobs:
   - job: "Build_and_Test"
     steps:
     - task: NodeTool@0
-      displayName: 'NPM Audit, Build and Test'
+      displayName: 'Install node'
       inputs:
         versionSpec: '10.x'
     - script: |
@@ -29,42 +29,34 @@ jobs:
     - script: |
         npm run test
       displayName: 'NPM Test'
-  - job: "Static_Code_Analysis_and_Testing"
-    steps:
-      - task: NodeTool@0
-        displayName: 'Coveralls reporting'
-        inputs:
-          versionSpec: '10.x'
-      - script: |
-          npm run coveralls
-      - task: PublishCodeCoverageResults@1
-        displayName: 'Code_coverage_report'
-        inputs:
-          codeCoverageTool: Cobertura
-          summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
-      - task: PublishTestResults@2
-        displayName: 'Publish_Test_Results'
-        inputs:
-          testResultsFormat: 'JUnit'
-          testResultsFiles: '$(System.DefaultWorkingDirectory)/junit.xml'
+    - script: |
+        npm run coveralls
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Code_coverage_report'
+      inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
+    - task: PublishTestResults@2
+      displayName: 'Publish_Test_Results'
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '$(System.DefaultWorkingDirectory)/junit.xml'
       # - task: WhiteSource Bolt@20
       #   inputs:
       #     cwd: '$(System.DefaultWorkingDirectory)/' 
-      - task: SonarCloudPrepare@1
-        inputs:
-          SonarCloud: 'azure-devops-build'
-          organization: 'eteration'
-          scannerMode: 'CLI'
-          configMode: 'manual'
-          cliProjectKey: 'secure-devops-sandbox.azure-meetups.eteration'
-          cliProjectName: 'secure-devops-sandbox'
-          cliSources: '.'
-      - task: SonarCloudAnalyze@1
-      - task: SonarCloudPublish@1
-        inputs:
-          pollingTimeoutSec: '300'
-  - job: "Container_Build_and_Scanning"
-    steps:     
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'azure-devops-build'
+        organization: 'eteration'
+        scannerMode: 'CLI'
+        configMode: 'manual'
+        cliProjectKey: 'secure-devops-sandbox.azure-meetups.eteration'
+        cliProjectName: 'secure-devops-sandbox'
+        cliSources: '.'
+    - task: SonarCloudAnalyze@1
+    - task: SonarCloudPublish@1
+      inputs:
+        pollingTimeoutSec: '300'
     - task: Docker@2
       displayName: 'Build and push Docker Image'
       inputs:
