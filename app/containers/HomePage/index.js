@@ -16,11 +16,8 @@ import { makeSelectLocale } from '../LanguageProvider/selectors';
 import messages from './messages';
 
 export function LanguageButton(props) {
-  const toggle = () => {
-    props.onLocaleToggle(props.lang);
-  };
   return (
-    <button type="button" onClick={toggle}>
+    <button type="button" onClick={() => props.onLocaleToggle(props.lang)}>
       {props.lang}
     </button>
   );
