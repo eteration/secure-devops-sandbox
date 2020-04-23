@@ -1,4 +1,5 @@
-FROM nginx:alpine
+# FROM nginx:alpine
+FROM nginx:1.11.1-alpine
 
 # copy the build folder from react to the root of nginx (www)
 COPY  build /usr/share/nginx/html
