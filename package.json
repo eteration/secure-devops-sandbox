@@ -1,7 +1,7 @@
 {
   "name": "secure-devops-sandbox",
   "version": "1.0.0",
-  "description": "A sandbox project that uses react/nodejs project to demonstrate secure devops practices based on the highly successful react boiler plate",
+  "description": "The sample web projectderived from react boiler plate for the DevSecOps Webinar",
   "repository": {
     "type": "git",
     "url": "git://github.com/eteration/secure-devops-sandbox.git"
