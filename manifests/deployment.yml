@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "webinar"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "webinar"
+    spec:
+      containers:
+        - name: "webinar"
+          image: "eteration.azurecr.io/webinar"
+          ports:
+          - containerPort: 80
